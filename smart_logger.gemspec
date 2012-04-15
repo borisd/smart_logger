@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.description = "Smart grouping of log entries"
   s.authors     = ["Boris Dinkevich"]
   s.email       = 'do@itlater.com'
-  s.homepage    = 'http://rubygems.org/gems/smart_logger'
+  s.homepage    = 'https://github.com/borisd/smart_logger'
   s.files       = ["lib/smart_logger.rb", 
                    "lib/smart_logger/active_support.rb",
                    "lib/smart_logger/logger.rb",
