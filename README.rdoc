@@ -2,14 +2,18 @@
 
 Smart logger is a simple library that allows grouping of log messages according to process and tags.
 
-In the simplest usecase, it will prepend all log messages from a single Rack(/Rails) request with a unique Water Mark.
+For example:
+
+All log messages coming from within the same Rack/Rails request will be prepended with an unique watermark.
 This will all you to easily distinguish which action caused a series of events.
 
 == Advanced Tagging
 
-The library also allows to add additional parameters, for example: remote-IP
+The library also allows to add additional parameters that are presisted for any log output during the current action.
 
-The parameters are presisted accross any log outputs withing the Thread while your action is in progress.
+For example:
+
+  SmartLogger.add(:ip, user.ip)
 
 = Download and Installation
 
@@ -21,20 +25,36 @@ or by adding to your Gemfile
 
 = Usage
 
-Add to your config/initializers/smart_logger.rb
+Add to:
+config/initializers/smart_logger.rb
   
   require 'smart_logger'
   SmartLogger.initialize
 
 
-Adding tags: app/controllers/application_controller.rb
-
+Add tags:
+app/controllers/application_controller.rb
   
   before_filter :setup_logger
 
   def setup_logger
-    SmartLogger::add(:source, request.remote_ip)
+    SmartLogger.add(:source, request.remote_ip)
   end
+
+Custom wrapping of actions:
+
+    SmartLogger.start 'Get facebook graph'
+    SmartLogger.add :facebook_uid, uid
+
+    get_facebook_graph(uid)
+
+    SmartLogger.end
+
+== Features
+
+=== Resque Support
+
+Automatically wraps resque workers with 'Job' tag
 
 == Support
 
