@@ -7,8 +7,9 @@ module SmartLogger
 
     def call(env)
       SmartLogger.start "Rack"
-      @app.call(env)
+      rc = @app.call(env)
       SmartLogger.end
+      rc
     end
   end
 end
