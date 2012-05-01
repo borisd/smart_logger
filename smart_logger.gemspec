@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'smart_logger'
-  s.version     = '0.1.0'
-  s.date        = '2012-04-15'
+  s.version     = '0.1.1'
+  s.date        = '2012-05-01'
   s.summary     = "Smart tagged log"
   s.description = "Smart grouping of log entries"
   s.authors     = ["Boris Dinkevich"]
